@@ -16,6 +16,7 @@ Note: This is still a work in progress, my api wrappers are very basic and still
     - [x] RAM
     - [x] Free
     - [ ] El-Nekhely
+
         this will be a pain to scrape since the website uses ancient tech. and also a csrf token is present, will work on it later when I have more time on my hands.
 - [ ] Concurrency
 - [ ] Export Results
