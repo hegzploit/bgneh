@@ -20,4 +20,7 @@ Note: This is still a work in progress, my api wrappers are very basic and still
         - this will be a pain to scrape since the website uses ancient tech. and also a csrf token is present, will work on it later when I have more time on my hands.
 - [ ] Concurrency
 - [ ] Export Results
-- [ ] Web-Interface (might never happen tbh)
+- [ ] Web-Interface (Django)
+    - [ ] Start the app
+    - [ ] write out simple views
+    - [ ] publish on server
