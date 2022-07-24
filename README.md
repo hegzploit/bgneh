@@ -28,12 +28,6 @@ Note: This is still a work in progress, my api wrappers are very basic and still
   - [ ] El-Nekhely
     - this will be a pain to scrape since the website uses ancient tech. and also a csrf token is present, will work on it later when I have more time on my hands.
 - [ ] Concurrency
-- [ ] Export Results
-- [ ] Web-Interface (Django)
-  - [ ] Start the app
-  - [ ] write out simple views
-  - [ ] publish on server
-
-```
-
-```
+- [x] Export Results
+- [ ] Django Web-Interface
+- [ ] Bugfixing the search functions
