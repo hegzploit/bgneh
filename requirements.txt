@@ -1,0 +1,4 @@
+iterfzf
+requests
+bs4
+prettytable
