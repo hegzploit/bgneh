@@ -3,7 +3,9 @@ from operator import itemgetter
 from unittest import result
 import requests
 from bs4 import BeautifulSoup
+from iterfzf import iterfzf
 from typing import List, Dict, Tuple, Callable
+from prettytable import from_csv
 
 
 def gammal_search(query: str):
@@ -35,8 +37,8 @@ def fut_search(query: str):
     r = requests.get(fut_search_url)
     soup = BeautifulSoup(r.text, 'html.parser')
     try:
-        no_of_pages = soup.find_all('div', id="paging")[
-            0].find_all('a')[-2].text
+        no_of_pages = int(soup.find_all('div', id="paging")[
+            0].find_all('a')[-2].text)
     except Exception:
         no_of_pages = 1
     data = []
@@ -129,23 +131,34 @@ class Scraper():
     def run(self) -> List[Tuple[str, float]]:
         return self.shop_engine(self.query)
 
-    def save_to_file(self, filename: str) -> None:
-        with open(filename, 'w') as f:
-            for item in self.run():
-                f.write(f"{item[0]} {item[1]}\n")
+    def save_to_csv(self, filename: str) -> None:
+        from pandas import DataFrame
+        data = self.run()
+        # make sure it's two columns
+        data = [[item[0], item[1]] for item in data]
+        df = DataFrame(data,  columns=['Name', 'Price'])
+        df.to_csv(filename, index=False)
 
 
 def main() -> None:
+    query = input("Enter query: ")
 
-    shop_engines = [
-        (gammal_search, "Gammal Electronics"),
-        (fut_search, "Fut Electronics"),
-        (ram_search, "Ram-E-Shop"),
-        (free_search, "Free Electronics"),
-    ]
-    scarper = Scraper(shop_engine=free_search, query="ic")
-    data = scarper.run()
-    print(data)
+    shop_engines: dict = {
+        "Gammal Electronics": gammal_search,
+        "Fut Electronics": fut_search,
+        "Ram-E-Shop": ram_search,
+        "Free Electronics": free_search,
+    }
+
+    search_engine = iterfzf(
+        shop_engines,
+        multi=True
+    )
+    for engine in search_engine:
+        scarper = Scraper(shop_engine=shop_engines[engine], query=query)
+        scarper.save_to_csv(filename=f"{engine}_{query}.csv")
+        with open(f"{engine}_{query}.csv", 'r') as f:
+            print(from_csv(f))
 
 
 main()
