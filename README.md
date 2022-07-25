@@ -16,7 +16,7 @@ Note: This is still a work in progress, my api wrappers are very basic and still
 ## Installation
 
 ```bash
- > sudo pip install -r requirements.txt
+ > pip3 install -r requirements.txt
 ```
 
 ## TODO:
