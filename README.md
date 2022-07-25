@@ -2,6 +2,8 @@
 
 A python script that finds the cheapest electronic component by searching in all the popular stores.
 
+![](./bgneh_demo.gif)
+
 ## Supported Stores
 
 - [Future Electronics](https://store.fut-electronics.com/)
