@@ -69,7 +69,7 @@ def ram_search(query: str):
 
     data = {
         'ppp': '-1',
-        's': 'ic',
+        's': query,
         'product_cat': '0',
         'post_type': 'product',
     }
@@ -96,7 +96,7 @@ def free_search(query: str):
 
     data = {
         'ppp': '-1',
-        's': 'ic',
+        's': query,
         'product_cat': '0',
         'post_type': 'product',
     }
@@ -121,7 +121,7 @@ SearchEngineFunction = Callable[str, List[Tuple[str, float]]]
 
 class Scraper():
 
-    def __init__(self, shop_engine, query: str):
+    def __init__(self, shop_engine: SearchEngineFunction, query: str):
         self.shop_engine = shop_engine
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
