@@ -19,8 +19,10 @@ def all_search(query: str):
     data = []
     # TODO: Make this parallel
     for engine in shop_engines:
+        print(f"searching in engine: {engine.__name__}...")
         with contextlib.suppress(Exception):
             data.extend(engine(query))
+    data.sort(key=itemgetter(1))
     return data
 
 def gammal_search(query: str):
@@ -175,4 +177,5 @@ def main() -> None:
             print(from_csv(f))
 
 
-main()
+while True:
+    main()
