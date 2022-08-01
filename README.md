@@ -1,6 +1,6 @@
 # B-Gneh
 
-A python script that finds the cheapest electronic component by searching in all the popular stores.
+A python script that finds the cheapest electronic component by searching in local stores.
 
 ![](./bgneh_demo.gif)
 
@@ -19,17 +19,9 @@ Note: This is still a work in progress, my api wrappers are very basic and still
  > pip3 install -r requirements.txt
 ```
 
-## TODO:
+## Features
 
-- [ ] Support all the popular stores in bab-el-louq
-  - [x] Future
-  - [x] El-Gammal
-    - [x] Parse: Item, Price and Link
-  - [x] RAM
-  - [x] Free
-  - [ ] El-Nekhely
-    - this will be a pain to scrape since the website uses ancient tech. and also a csrf token is present, will work on it later when I have more time on my hands.
-- [ ] Concurrency
-- [x] Export Results
-- [ ] Django Web-Interface
-- [ ] Bugfixing the search functions
+- Searches within any of the supported stores
+- Automatically sorts by price
+- Search within all of the availiable stores at once
+- Automatically exports the search results as a CSV file in the current directory
